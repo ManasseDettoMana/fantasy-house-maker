@@ -38,7 +38,24 @@ export class CasateList {
     });
   }
 
+  eliminaCasata(id: number): void{
+    this.isLoading.set(true);
+    this.errorMessage.set(null);
+
+    this.casataService.elimina(id).subscribe({
+      next: ()=>{
+        this.isLoading.set(false);
+        this.caricaCasate();
+      },
+      error: (err)=>{
+        this.errorMessage.set(err);
+        this.isLoading.set(false);
+      }
+    });
+  }
+
   goToNewCasataForm(): void {
     this.router.navigate(['/new-casata-form']);
   }
+
 }
