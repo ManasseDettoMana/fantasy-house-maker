@@ -1,11 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { CasataService } from '../../core/services/casata.service';
-import { CasataResponse } from '../../models/casata.model';
+import { CasataRequest, CasataResponse } from '../../models/casata.model';
 import { Router } from '@angular/router';
+import { Header } from "../../utils/header/header";
 @Component({
   selector: 'app-casate-list',
-  imports: [],
+  imports: [Header],
   templateUrl: './casate-list.html',
   styleUrl: './casate-list.scss',
 })
@@ -14,8 +15,8 @@ export class CasateList {
   private readonly router = inject(Router);
 
   casate = signal<CasataResponse[]>([]);
-  isLoading = signal(false);
   errorMessage = signal<string | null>(null);
+  isLoading = signal(false);
 
   ngOnInit(): void {
     this.caricaCasate();
@@ -56,6 +57,13 @@ export class CasateList {
 
   goToNewCasataForm(): void {
     this.router.navigate(['/new-casata-form']);
+  }
+
+  goToUpdateCasataForm(casata: CasataRequest): void{
+    this.router.navigate(['/update-casata-form', casata],
+      {state: {casata}
+    });
+
   }
 
 }

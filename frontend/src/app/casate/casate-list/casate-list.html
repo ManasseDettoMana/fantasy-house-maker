@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container dashboard">
     <div class="row mb-3">
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-success" (click)="goToNewCasataForm()"><i class="bi bi-plus">Nuova Casata</i></button>
@@ -15,15 +15,15 @@
             </tr>
         </thead>
         <tbody>
-            @for(casata of casate(); track casata.id){
+            @for(casata of casate(); track casata.id; let i = $index){
                 <tr>
-                    <th scope="row">{{casata.id}}</th>
+                    <th scope="row">{{i+1}}</th>
                     <td>{{casata.nome}}</td>
                     <td>{{casata.motto}}</td>
                     <td>{{casata.stemma}}</td>
                     <td>
                         <button type="button" class="btn">
-                            <i class="bi bi-pencil" aria-label="modifca"></i>
+                            <i class="bi bi-pencil" aria-label="modifca" (click)="goToUpdateCasataForm(casata)"></i>
                         </button>
                         <button type="button" class="btn" aria-label="elimima" (click)="eliminaCasata(casata.id)">
                             <i class="bi bi-trash"></i>
