@@ -1,15 +1,23 @@
-<div class="content d-flex justify-content-center align-items-center">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card">
-        <div class="card-body">
-            <div class="mb-5">
-                <input type="text" id="username" formControlName="username" placeholder="Username...">
-            </div>
-            <div>
-                <input type="password" id="password" formControlName="password" placeholder="Password...">
-            </div>
-        </div>
-        <div class="d-flex justify-content-center py-3">
-            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Invia</button>
-        </div>
-    </form>
+<div class="content d-flex flex-column justify-content-center align-items-center">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card">
+    <div class="card-body">
+      <div class="mb-5">
+        <input type="text" id="username" formControlName="username" placeholder="Username...">
+      </div>
+      <div>
+        <input type="password" id="password" formControlName="password" placeholder="Password...">
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-3">
+      <button type="submit" class="btn btn-primary" [disabled]="isLoading()">
+        {{ isLoading() ? 'Caricamento...' : 'Accedi' }}
+      </button>
+    </div>
+  </form>
+
+  @if (errorMessage()) {
+    <div class="alert-wrapper">
+      <app-alert-closeable errorMessage="{{ errorMessage() }}" />
+    </div>
+  }
 </div>
