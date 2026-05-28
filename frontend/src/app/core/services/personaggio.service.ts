@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { PersonaggioRequest, PersonaggioResponse } from '../../models/personaggio.model';
 
@@ -37,5 +37,20 @@ export class PersonaggioService {
 
   elimina(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  esistePersonaggioEsatto(nome: string): Observable<boolean> {
+    return this.cerca(nome).pipe(
+      map(res =>
+        res.some(p => p.nome.toLowerCase() === nome.toLowerCase())
+      )
+    );
+  }
+  esisteInCasata(nome: string, casataId: number): Observable<boolean> {
+    return this.getByCasata(casataId).pipe(
+      map(personaggi =>
+        personaggi.some(p => p.nome.toLowerCase() === nome.toLowerCase())
+      )
+    );
   }
 }

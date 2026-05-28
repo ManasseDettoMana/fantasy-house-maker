@@ -3,10 +3,16 @@ import { AuthService } from '../../core/services/auth.service';
 import { CasataService } from '../../core/services/casata.service';
 import { CasataRequest, CasataResponse } from '../../models/casata.model';
 import { Router } from '@angular/router';
-import { Header } from "../../utils/header/header";
+// import { Header } from "../../utils/header/header";
+import { ButtonModule } from 'primeng/button';
+// import { ConfirmDialogModule } from 'primeng/confirmdialog';
+// import { ToastModule } from 'primeng/toast';
+// import { MessageService, ConfirmationService } from 'primeng/api';
+// import { CustomDeleteButton } from '../../utils/mana-delete-dialog/mana-delete-dialog';
 @Component({
   selector: 'app-casate-list',
-  imports: [Header],
+  imports: [ButtonModule],
+  // providers: [ConfirmationService, MessageService],
   templateUrl: './casate-list.html',
   styleUrl: './casate-list.scss',
 })

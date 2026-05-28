@@ -1,8 +1,8 @@
 export interface PersonaggioRequest {
   nome: string;
-  ruolo: string;
-  descrizione: string;
-  eta: number;
+  ruolo?: string;
+  descrizione?: string;
+  eta?: number;
   casataId: number;
 }
 

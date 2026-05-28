@@ -1,5 +1,5 @@
-import { Component, signal, inject } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-form-dinamico',
@@ -7,12 +7,8 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from "@angula
   templateUrl: './form-dinamico.html',
   styleUrl: './form-dinamico.scss',
 })
-export class FormDinamico {
+export default class FormDinamico {
   private readonly fb = inject(FormBuilder);
-
-  isLoading = signal(false);
-  errorMessage = signal<string | null>(null);
-  
 
   formDinamico = this.fb.group({
     domanda1: ['', Validators.required],

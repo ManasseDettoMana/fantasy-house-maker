@@ -1,36 +1,48 @@
 <div class="container dashboard">
-    <div class="row mb-3">
-        <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-success" (click)="goToNewCasataForm()"><i class="bi bi-plus">Nuova Casata</i></button>
-        </div>
+  <div class="row mb-3">
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-success" (click)="goToNewCasataForm()"><i class="bi bi-plus">Nuova Casata</i></button>
     </div>
-    <table class="table table-hover">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Motto</th>
-                <th scope="col">Stemma</th>
-                <th scope="col">Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(casata of casate(); track casata.id; let i = $index){
-                <tr>
-                    <th scope="row">{{i+1}}</th>
-                    <td>{{casata.nome}}</td>
-                    <td>{{casata.motto}}</td>
-                    <td>{{casata.stemma}}</td>
-                    <td>
-                        <button type="button" class="btn">
-                            <i class="bi bi-pencil" aria-label="modifca" (click)="goToUpdateCasataForm(casata)"></i>
-                        </button>
-                        <button type="button" class="btn" aria-label="elimima" (click)="eliminaCasata(casata.id)">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+  </div>
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Motto</th>
+        <th scope="col">Stemma</th>
+        <th scope="col">Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(casata of casate(); track casata.id; let i = $index){
+        <tr>
+          <th scope="row">{{i+1}}</th>
+          <td>{{casata.nome}}</td>
+          <td>{{casata.motto}}</td>
+          <td>{{casata.stemma}}</td>
+          <td>
+            <!-- <button type="button" class="btn" (click)="goToUpdateCasataForm(casata)">
+                <i class="bi bi-pencil" aria-label="modifca"></i>
+            </button> -->
+            
+            <!-- <button type="button" class="btn" aria-label="elimima" (click)="eliminaCasata(casata.id)">
+              <i class="bi bi-trash"></i>
+            </button> -->
+            <!-- <p-toast />
+            <p-confirm-dialog />
+            
+            <p-button (click)="confirmDeleteDialog($event, casata.id)" label="Delete" severity="danger" [outlined]="true" >
+              <i class="bi bi-trash"></i>
+            </p-button> -->
+            <p-button severity="success" [outlined]="true">
+                <i class="bi bi-pencil" aria-label="modifca"></i>
+            </p-button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  
 </div>

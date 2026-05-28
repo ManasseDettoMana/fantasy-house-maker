@@ -35,7 +35,7 @@ public class Personaggio {
 
     private Integer eta;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "casata_id")
     private Casata casata;
 }

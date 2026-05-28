@@ -11,11 +11,11 @@ import { AlertCloseable } from '../../utils/alert-closeable/alert-closeable';
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
 })
-export class LoginForm {
+export default class LoginForm {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private router = inject(Router);
-  isLoggedIn = signal(false);
+  // isLoggedIn = signal(false);
   isLoading = signal(false);
   errorMessage = signal<string | null>(null);
 
@@ -34,18 +34,19 @@ export class LoginForm {
 
     this.authService.login(credentials).subscribe({
       next: ()=>{
-        this.isLoggedIn.set(true);
+        // this.isLoggedIn.set(true);
         this.isLoading.set(false);
         this.router.navigate(['/dashboard']);
       },
-      error: (err)=>{
+      error: ()=>{
         this.errorMessage.set('Login fallito');
         this.isLoading.set(false);
-      },
-      complete: ()=>{
-        this.isLoading.set(false);
-        this.router.navigate(['/dashboard']);
       }
+      //,
+      // complete: ()=>{
+      //   this.isLoading.set(false);
+      //   this.router.navigate(['/dashboard']);
+      // }
     });
   }
 }

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './new-casata-form.html',
   styleUrl: './new-casata-form.scss',
 })
-export class NewCasataForm {
+export default class NewCasataForm {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private readonly casataService = inject(CasataService);
@@ -21,7 +21,7 @@ export class NewCasataForm {
     nome: ['', Validators.required],
     motto: ['', Validators.required],
     stemma: ['', Validators.required]
-  })
+  });
 
   onSubmit(): void{
     if(this.newCasataForm.invalid) return;
@@ -44,4 +44,7 @@ export class NewCasataForm {
     });
   }
 
+  goToDashboard(): void{
+    this.router.navigate(['/casate']);
+  }
 }

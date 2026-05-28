@@ -5,11 +5,11 @@ import { Header } from "../../utils/header/header";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Header],
+  imports: [],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
-export class Dashboard {
+export default class Dashboard {
   private router = inject(Router);
   private readonly authService = inject(AuthService);
 
@@ -18,6 +18,13 @@ export class Dashboard {
       this.router.navigate(['/casate']);
     }
   }
+
+  goToPersonaggi(): void {
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(['/personaggi']);
+    }
+  }
+
   goToFormDinamico(): void{
     if(this.authService.isLoggedIn()){
       this.router.navigate(['/form-dinamico']);

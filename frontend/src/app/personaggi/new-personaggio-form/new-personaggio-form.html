@@ -1,0 +1,65 @@
+<div class="d-flex flex-column justify-content-center align-items-center min-vh-100 py-4 blocchetto">
+  <div class="card p-4 shadow-sm blocchetto">
+    <h4 class="mb-4">Nuovo Personaggio</h4>
+
+    <form [formGroup]="newPersonaggioForm" (ngSubmit)="onSubmit()">
+
+      <!-- Nome -->
+      <div class="mb-3">
+        <label for="nome" class="form-label fw-semibold">Nome</label>
+        <input
+          pInputText
+          id="nome"
+          type="text"
+          formControlName="nome"
+          placeholder="Inserisci il nome"
+          class="w-100"
+        />
+        @if (newPersonaggioForm.get('nome')?.invalid && newPersonaggioForm.get('nome')?.touched) {
+          <small class="text-danger">Il nome è obbligatorio.</small>
+        }
+      </div>
+
+      <!-- Casata -->
+      <div class="mb-4">
+        <label for="casata" class="form-label fw-semibold">Casata</label>
+        <p-select
+          inputId="casata"
+          formControlName="casata"
+          [options]="casate()"
+          optionLabel="nome"
+          placeholder="Seleziona una casata"
+          class="w-100"
+        />
+        @if (newPersonaggioForm.get('casata')?.invalid && newPersonaggioForm.get('casata')?.touched) {
+          <small class="text-danger">La casata è obbligatoria.</small>
+        }
+      </div>
+
+      <!-- Errore generale -->
+      @if (errorMessage()) {
+        <div class="alert alert-danger py-2 mb-3">{{ errorMessage() }}</div>
+      }
+      <div class="d-flex justify-content-between">
+        <!-- Annulla -->
+          <p-button
+            type="button"
+            label="Annulla"
+            severity="info"
+            icon="pi pi-angle-left"
+            [loading]="isLoading()"
+            (click)="goToPersonaggi()"
+          />
+        
+        <!-- Submit -->
+          <p-button
+            type="submit"
+            label="Salva"
+            icon="pi pi-save"
+            [disabled]="newPersonaggioForm.invalid || isLoading()"
+            [loading]="isLoading()"
+          />
+      </div>
+    </form>
+  </div>
+</div>

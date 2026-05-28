@@ -1,0 +1,71 @@
+@if (isLoading()) {
+  <p>Caricamento...</p>
+}
+
+@if (errorMessage()) {
+  <p class="text-red-500">{{ errorMessage() }}</p>
+}
+
+@if (!isLoading()) {
+    
+  <div class="container dashboard">
+    <div class="d-flex justify-content-end mb-3">
+      <p-button (click)="goToNewCasataForm()" (keyup.enter)="goToNewCasataForm()">
+        <i class="pi pi-plus"></i>Nuova Casata
+      </p-button>
+    </div>
+    <p-table [value]="casate()" [tableStyle]="{ 'min-width': '60rem' }">
+
+      <ng-template #header>
+        <tr>
+          <th pSortableColumn="id" style="width:20%">
+            <div class="flex items-center gap-2">
+              # <p-sortIcon field="id" />
+            </div>
+          </th>
+          <th pSortableColumn="casa" style="width:20%">
+            <div class="flex items-center gap-2">
+              Casa <p-sortIcon field="casa" />
+            </div>
+          </th>
+          <th pSortableColumn="stemma" style="width:20%">
+            <div class="flex items-center gap-2">
+              Stemma <p-sortIcon field="stemma" />
+            </div>
+          </th>
+          <th pSortableColumn="motto" style="width:20%">
+            <div class="flex items-center gap-2">
+              Motto <p-sortIcon field="motto" />
+            </div>
+          </th>
+          <th style="width:20%">
+            <div class="flex items-center gap-2">
+              Azioni
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template #body let-casata let-rowIndex="rowIndex"> 
+        <tr>
+          <td>{{ rowIndex + 1}}</td>
+          <td>{{ casata.nome }}</td>
+          <td>{{ casata.stemma }}</td>
+          <td>{{ casata.motto }}</td>
+          <td>
+            <p-button severity="warn" [outlined]="true" (click)="goToUpdateCasataForm(casata.id)">
+              <i class="bi bi-pencil"></i>
+            </p-button>
+            <mana-delete-button
+              (confermato)="eliminaCasata(casata.id)">
+            </mana-delete-button>
+            <p-button severity="info" [outlined]="true" (click)="goToPersonaggiTree(casata.id)">
+              <i class="bi bi-eye"></i>
+            </p-button>
+          </td>
+        </tr>
+      </ng-template>
+
+    </p-table>
+  </div>
+}
