@@ -7,21 +7,22 @@ import { CustomDeleteButton } from '../../utils/mana-delete-dialog/mana-delete-d
 import { ButtonModule } from 'primeng/button';
 import { DestroyRef } from '@angular/core';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 @Component({
   selector: 'app-casate-list-2',
-  imports: [TableModule, CustomDeleteButton, ButtonModule, RouterLink],
+  imports: [TableModule, CustomDeleteButton, ButtonModule, RouterLink, PaginatorModule],
   templateUrl: './casate-list-2.html',
   styleUrl: './casate-list-2.scss',
 })
 export default class CasateList2 implements OnInit{
   private readonly casataService = inject(CasataService);
-  private readonly router = inject(Router);
+  // private readonly router = inject(Router);
   private destroyRef = inject(DestroyRef);
 
   casate = signal<CasataResponse[]>([]);
   errorMessage = signal<string | null>(null);
   isLoading = signal(false);
+  // rows = signal<number>(5);
 
   ngOnInit(): void {
     this.caricaCasate();
@@ -63,4 +64,9 @@ export default class CasateList2 implements OnInit{
       }
     });
   }
+
+  // per adesso lo lascio qua ma vediamo perché devo mettere altri record
+  // onPageChange(event: PaginatorState) {
+  //   this.rows.set(event.first ?? 5);
+  // }
 }

@@ -16,7 +16,7 @@
       </p-button>
     </div>
 
-    <p-table [value]="personaggi()" [tableStyle]="{ 'min-width': '60rem' }">
+    <p-table [value]="personaggi()" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10]">
       <ng-template #header>
         <tr>
           <th pSortableColumn="id" style="width:20%;">

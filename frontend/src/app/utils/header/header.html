@@ -1,10 +1,17 @@
 <nav class="navbar fixed-top navbar-light bg-light">
     @if(!isDashboard()){
-        <div class="container d-flex justify-content-center">
-            <a routerLink="/" class="navbar-brand">Home</a>
-            <a routerLink="/casate" class="navbar-brand">Casate</a>
-            <a routerLink="/personaggi" class="navbar-brand" >Personaggi</a>
-        </div>
+        <div class="container position-relative d-flex align-items-center justify-content-end">
+            <div class="position-absolute start-50 translate-middle-x d-flex gap-3">
+              <a routerLink="/" class="navbar-brand">Home</a>
+              <a routerLink="/casate" class="navbar-brand">Casate</a>
+              <a routerLink="/personaggi" class="navbar-brand">Personaggi</a>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <p-menu #menu [model]="options()" [popup]="true" />
+              <p-button severity="secondary" [rounded]="true" (click)="menu.toggle($event)" icon="pi pi-user" />
+            </div>
+          </div>
     } @else {
         <div class="container">
             <a routerLink="/" class="navbar-brand">Home</a>
@@ -16,4 +23,4 @@
             }
         </div>
     }
-</nav>
+</nav> 
