@@ -11,7 +11,7 @@
 @if (!isLoading()) {
   <div class="container dashboard">
     <div class="d-flex justify-content-end mb-3">
-      <p-button (click)="goToNewPersonaggioForm()" (keyup.enter)="goToNewPersonaggioForm()">
+      <p-button [routerLink]="['/new-personaggio-form']">
         <i class="pi pi-plus"></i>Nuovo Personaggio
       </p-button>
     </div>
@@ -47,7 +47,7 @@
           <td>{{personaggio.nome}}</td>
           <td>{{personaggio.casataNome}}</td>
           <td>
-            <p-button severity="warn" [outlined]="true" (click)="goToUpdatePersonaggioForm(personaggio.id)">
+            <p-button severity="warn" [outlined]="true" [routerLink]="['/update-personaggio-form', personaggio.id]">
               <i class="bi bi-pencil"></i>
             </p-button>
             <mana-delete-button

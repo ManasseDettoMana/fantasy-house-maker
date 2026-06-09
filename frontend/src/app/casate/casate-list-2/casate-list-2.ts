@@ -2,7 +2,7 @@ import { CasataService } from './../../core/services/casata.service';
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { CasataResponse } from '../../models/casata.model';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CustomDeleteButton } from '../../utils/mana-delete-dialog/mana-delete-dialog';
 import { ButtonModule } from 'primeng/button';
 import { DestroyRef } from '@angular/core';
@@ -10,7 +10,7 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-casate-list-2',
-  imports: [TableModule, CustomDeleteButton,ButtonModule],
+  imports: [TableModule, CustomDeleteButton, ButtonModule, RouterLink],
   templateUrl: './casate-list-2.html',
   styleUrl: './casate-list-2.scss',
 })
@@ -62,16 +62,5 @@ export default class CasateList2 implements OnInit{
         this.isLoading.set(false);
       }
     });
-  }
-
-  goToUpdateCasataForm(id: number): void{
-    this.router.navigate(['/update-casata-form', id]);
-  }
-
-  goToNewCasataForm(): void {
-    this.router.navigate(['/new-casata-form']);
-  }
-  goToPersonaggiTree(id: number): void {
-    this.router.navigate(['casata', id, 'tree']);
   }
 }

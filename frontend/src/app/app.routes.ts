@@ -3,7 +3,10 @@ import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
-    { path: 'login', loadComponent: () => import('./login/login-form/login-form')},
+    { 
+        path: 'login', 
+        loadComponent: () => import('./login/login-form/login-form'),
+    },
     { 
         path: 'dashboard',
         loadComponent: () => import('./dashboard/dashboard/dashboard'),
@@ -35,6 +38,11 @@ export const routes: Routes = [
         canActivate: [authGuard]
     },
     { 
+        path: 'update-personaggio-form/:id', 
+        loadComponent: () => import('./personaggi/update-personaggio-form/update-personaggio-form'),
+        canActivate: [authGuard]
+    },
+    { 
         path: 'casata/:id/tree', 
         loadComponent: () => import('./personaggi/albero-g/albero-g'),
         canActivate: [authGuard]
@@ -44,13 +52,6 @@ export const routes: Routes = [
         loadComponent: () => import('./utils/form-dinamico/form-dinamico'),
         canActivate: [authGuard]
     },
-    { 
-        path: '', 
-        loadComponent: () => import('./dashboard/dashboard/dashboard'),
-        pathMatch: 'full'
-    },
-    { 
-        path: '**', 
-        redirectTo: 'dashboard'
-    },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: '**', redirectTo: 'dashboard' },
 ];

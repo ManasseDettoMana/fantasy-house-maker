@@ -10,7 +10,7 @@
     
   <div class="container dashboard">
     <div class="d-flex justify-content-end mb-3">
-      <p-button (click)="goToNewCasataForm()" (keyup.enter)="goToNewCasataForm()">
+      <p-button [routerLink]="['/new-casata-form']">
         <i class="pi pi-plus"></i>Nuova Casata
       </p-button>
     </div>
@@ -53,13 +53,13 @@
           <td>{{ casata.stemma }}</td>
           <td>{{ casata.motto }}</td>
           <td>
-            <p-button severity="warn" [outlined]="true" (click)="goToUpdateCasataForm(casata.id)">
+            <p-button severity="warn" [outlined]="true" [routerLink]="['/update-casata-form', casata.id]">
               <i class="bi bi-pencil"></i>
             </p-button>
             <mana-delete-button
               (confermato)="eliminaCasata(casata.id)">
             </mana-delete-button>
-            <p-button severity="info" [outlined]="true" (click)="goToPersonaggiTree(casata.id)">
+            <p-button severity="info" [outlined]="true" [routerLink]="['/casata', casata.id]">
               <i class="bi bi-eye"></i>
             </p-button>
           </td>

@@ -1,7 +1,19 @@
 <nav class="navbar fixed-top navbar-light bg-light">
-    <div class="container d-flex justify-content-center">
-        <a routerLink="/" class="navbar-brand">Home</a>
-        <a routerLink="/casate" class="navbar-brand">Casate</a>
-        <a routerLink="/personaggi" class="navbar-brand" >Personaggi</a>
-    </div>
+    @if(!isDashboard()){
+        <div class="container d-flex justify-content-center">
+            <a routerLink="/" class="navbar-brand">Home</a>
+            <a routerLink="/casate" class="navbar-brand">Casate</a>
+            <a routerLink="/personaggi" class="navbar-brand" >Personaggi</a>
+        </div>
+    } @else {
+        <div class="container">
+            <a routerLink="/" class="navbar-brand">Home</a>
+            @if(!isLogged()) {
+                <a routerLink="/login" class="navbar-brand"><i class="pi pi-sign-in"></i> Login</a>
+            } @else {
+                <p-menu #menu [model]="options()" [popup]="true" />
+                <p-button severity="secondary" rounded="true" (click)="menu.toggle($event)" icon="pi pi-user" />
+            }
+        </div>
+    }
 </nav>

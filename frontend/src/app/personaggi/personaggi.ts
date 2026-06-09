@@ -1,7 +1,7 @@
 import { PersonaggioResponse } from './../models/personaggio.model';
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { PersonaggioService } from '../core/services/personaggio.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from "primeng/table";
@@ -9,7 +9,7 @@ import { CustomDeleteButton } from '../utils/mana-delete-dialog/mana-delete-dial
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 @Component({
   selector: 'app-personaggi',
-  imports: [ButtonModule, TableModule, CustomDeleteButton, ProgressSpinnerModule],
+  imports: [ButtonModule, TableModule, CustomDeleteButton, ProgressSpinnerModule, RouterLink],
   templateUrl: './personaggi.html',
   styleUrl: './personaggi.scss',
 })
@@ -61,13 +61,5 @@ export default class Personaggi {
         this.isLoading.set(false);
       }
     })
-  }
-
-  goToNewPersonaggioForm(): void {
-    this.router.navigate(['/new-personaggio-form']);
-  }
-
-  goToUpdatePersonaggioForm(id: number): void {
-    this.router.navigate(['/update-personaggio-form']);
   }
 }

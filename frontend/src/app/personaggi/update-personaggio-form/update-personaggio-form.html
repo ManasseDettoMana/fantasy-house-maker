@@ -1,11 +1,11 @@
-<!-- <div class="d-flex flex-column justify-content-center align-items-center min-vh-100 py-4 blocchetto">
+<div class="d-flex flex-column justify-content-center align-items-center min-vh-100 py-4 blocchetto">
   <div class="card p-4 shadow-sm blocchetto">
     <h4 class="mb-4">Nuovo Personaggio</h4>
 
-    <form [formGroup]="updatePersonaggioForm" (ngSubmit)="onSubmit()"> -->
+    <form [formGroup]="updatePersonaggioForm" (ngSubmit)="aggiornaPersonaggio()">
 
       <!-- Nome -->
-      <!-- <div class="mb-3">
+      <div class="mb-3">
         <label for="nome" class="form-label fw-semibold">Nome</label>
         <input
           pInputText
@@ -14,14 +14,14 @@
           formControlName="nome"
           placeholder="Inserisci il nome"
           class="w-100"
-        /> -->
-        <!-- @if (updatePersonaggioForm.get('nome')?.invalid && updatePersonaggioForm.get('nome')?.touched) {
+        /> 
+        @if (updatePersonaggioForm.get('nome')?.invalid && updatePersonaggioForm.get('nome')?.touched) {
           <small class="text-danger">Il nome è obbligatorio.</small>
         }
-      </div> -->
+      </div>
 
       <!-- Casata -->
-      <!-- <div class="mb-4">
+      <div class="mb-4">
         <label for="casata" class="form-label fw-semibold">Casata</label>
         <p-select
           inputId="casata"
@@ -31,35 +31,35 @@
           placeholder="Seleziona una casata"
           class="w-100"
         />
-        @if (newPersonaggioForm.get('casata')?.invalid && newPersonaggioForm.get('casata')?.touched) {
+        @if (updatePersonaggioForm.get('casata')?.invalid && updatePersonaggioForm.get('casata')?.touched) {
           <small class="text-danger">La casata è obbligatoria.</small>
         }
-      </div> -->
+      </div>
 
       <!-- Errore generale -->
-      <!-- @if (errorMessage()) {
+      @if (errorMessage()) {
         <div class="alert alert-danger py-2 mb-3">{{ errorMessage() }}</div>
       }
-      <div class="d-flex justify-content-between"> -->
+      <div class="d-flex justify-content-between"> 
         <!-- Annulla -->
-          <!-- <p-button
+          <p-button
             type="button"
             label="Annulla"
             severity="info"
             icon="pi pi-angle-left"
             [loading]="isLoading()"
-            (click)="goToPersonaggi()"
-          /> -->
+            [routerLink]="['/personaggi']"
+          />
         
         <!-- Submit -->
-          <!-- <p-button
+          <p-button
             type="submit"
             label="Salva"
             icon="pi pi-save"
-            [disabled]="newPersonaggioForm.invalid || isLoading()"
+            [disabled]="updatePersonaggioForm.invalid || isLoading()"
             [loading]="isLoading()"
           />
       </div>
     </form>
   </div>
-</div> -->
+</div> 
