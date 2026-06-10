@@ -34,7 +34,11 @@ export class Header {
     this.document.body.classList.toggle('dark-theme', theme === 'dark');
   });
 
-  currentTheme = signal<Theme>('white');
+  // currentTheme = signal<Theme>('white');
+  // prova con localstorage
+  currentTheme = signal<Theme>(
+    (localStorage.getItem('theme') as Theme) ?? 'white'
+  )
   isWhiteTheme = computed(() => this.currentTheme() == 'white');
 
   isLogged = signal<boolean>(this.authService.isLoggedIn());
@@ -90,6 +94,10 @@ export class Header {
   }
 
   changeTheme(): void {
-    this.currentTheme.update(t => t === 'white' ? 'dark' : 'white');
+    this.currentTheme.update(t => {
+      const next = t === 'white' ? 'dark' : 'white';
+      localStorage.setItem('theme', next);
+      return next;
+    });
   }
 }
