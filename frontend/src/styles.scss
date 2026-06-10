@@ -8,6 +8,12 @@
 // Wedgewood     #5374AC
 // Polo Blue     #8BAFD0
 // Black Squeeze #EFF5FA
+$blue1: #141C33;
+$blue2: #2F456F;
+$blue3: #5374AC;
+$blue4: #8BAFD0;
+$blue5: #EFF5FA;
+
 
 // TEMA CHIARO (default)
 body {
@@ -21,7 +27,7 @@ body {
     --card-hover:            #D3D3D3;
     --table-color:           #ffffff;
     --table-header-bg:       #ffffff;
-    --paginator-color:      #ffffff;
+    --paginator-color:       #ffffff;
 
     background-color: var(--body-bg);
     color: var(--body-color);
@@ -36,11 +42,17 @@ body.dark-theme {
     --nav-link-active-color: #8BAFD0;
     --body-bg:               #0d1120;
     --body-color:            #EFF5FA;
-    --card-color:            #1a2340;
+    --card-color:            #8BAFD0;
     --card-hover:            #243060;
     --table-color:           #1a2340;
     --table-header-bg:       #141C33;
-    --paginator-color:         #141C33;
+    --paginator-color:       #141C33;
+
+    --blue1: #141C33;
+    --blue2: #2F456F;
+    --blue3: #5374AC;
+    --blue4: #8BAFD0;
+    --blue5: #EFF5FA;
 }
 
 // NAVBAR 
@@ -60,6 +72,16 @@ body.dark-theme {
     }
 }
 
+// NAVBAR
+.menu-item-danger {
+    .p-menuitem-text {
+      color: #e53935 !important;
+    }
+    .p-menuitem-icon {
+      color: #e53935 !important;
+    }
+  }
+
 // DASHBOARD
 .dashboard {
     margin-top: 7%;
@@ -74,7 +96,6 @@ body.dark-theme {
 }
 
 //  P-TABLE
-
 .p-datatable-tbody,
 .p-datatable-tbody > tr > td {
     background-color: var(--table-color);
