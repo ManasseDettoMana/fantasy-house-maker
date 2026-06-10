@@ -43,6 +43,8 @@ export class Header {
 
   isLogged = signal<boolean>(this.authService.isLoggedIn());
   isDashboard = computed(() => this.currentUrl()?.startsWith('/dashboard'));
+  isGoblinSlayer = computed(() => this.currentUrl()?.startsWith('/goblin-slayer'));
+
 
   private currentUrl = toSignal(
     this.router.events.pipe(map(() => this.router.url)),

@@ -1,30 +1,32 @@
-<nav class="navbar fixed-top">
-    @if(!isDashboard()){
-        <div class="container position-relative d-flex align-items-center justify-content-end">
-            <div class="position-absolute start-50 translate-middle-x d-flex gap-3">
-                <a routerLink="/" class="navbar-brand ctm-nav-link">Home</a>
-                <a routerLink="/casate" class="navbar-brand ctm-nav-link" routerLinkActive="active">Casate</a>
-                <a routerLink="/personaggi" class="navbar-brand ctm-nav-link" routerLinkActive="active">Personaggi</a>
-            </div>
+@if(!isGoblinSlayer()){
+	<nav class="navbar fixed-top">
+		@if(!isDashboard()){
+			<div class="container position-relative d-flex align-items-center justify-content-end">
+				<div class="position-absolute start-50 translate-middle-x d-flex gap-3">
+					<a routerLink="/" class="navbar-brand ctm-nav-link">Home</a>
+					<a routerLink="/casate" class="navbar-brand ctm-nav-link" routerLinkActive="active">Casate</a>
+					<a routerLink="/personaggi" class="navbar-brand ctm-nav-link" routerLinkActive="active">Personaggi</a>
+				</div>
 
-            <div class="d-flex align-items-center gap-2">
-                <p-toast />
-                <p-confirmdialog />
-              <p-menu #menu [model]="options()" [popup]="true" />
-              <p-button severity="secondary" [rounded]="true" (click)="menu.toggle($event)" icon="pi pi-user" />
-            </div>
-          </div>
-    } @else {
-        <div class="container">
-            <a routerLink="/" class="navbar-brand ctm-nav-link">Home</a>
-            @if(!isLogged()) {
-                <a routerLink="/login" class="navbar-brand"><i class="pi pi-sign-in"></i> Login</a>
-            } @else {
-                <p-toast />
-                <p-confirmdialog />
-                <p-menu #menu [model]="options()" [popup]="true" />
-                <p-button severity="secondary" rounded="true" (click)="menu.toggle($event)" icon="pi pi-user" />
-            }
-        </div>
-    }
-</nav> 
+				<div class="d-flex align-items-center gap-2">
+					<p-toast />
+					<p-confirmdialog />
+					<p-menu #menu [model]="options()" [popup]="true" />
+					<p-button severity="secondary" [rounded]="true" (click)="menu.toggle($event)" icon="pi pi-user" />
+				</div>
+			</div>
+		} @else {
+			<div class="container">
+				<a routerLink="/" class="navbar-brand ctm-nav-link">Home</a>
+				@if(!isLogged()) {
+					<a routerLink="/login" class="navbar-brand"><i class="pi pi-sign-in"></i> Login</a>
+				} @else {
+					<p-toast />
+					<p-confirmdialog />
+					<p-menu #menu [model]="options()" [popup]="true" />
+					<p-button severity="secondary" rounded="true" (click)="menu.toggle($event)" icon="pi pi-user" />
+				}
+			</div>
+		}
+	</nav> 
+}

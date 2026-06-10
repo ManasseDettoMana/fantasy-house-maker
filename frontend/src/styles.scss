@@ -72,25 +72,13 @@ body.dark-theme {
     }
 }
 
-// NAVBAR
-.menu-item-danger {
-    .p-menuitem-text {
-      color: #e53935 !important;
-    }
-    .p-menuitem-icon {
-      color: #e53935 !important;
-    }
-  }
-
 // DASHBOARD
 .dashboard {
     margin-top: 7%;
-
-    .card {
+    .box {
         background-color: var(--card-color);
     }
-
-    .card:hover {
+    .box:hover {
         background-color: var(--card-hover);
     }
 }

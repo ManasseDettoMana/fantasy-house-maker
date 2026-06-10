@@ -52,6 +52,11 @@ export const routes: Routes = [
         loadComponent: () => import('./utils/form-dinamico/form-dinamico'),
         canActivate: [authGuard]
     },
+    {
+        path: 'goblin-slayer',
+        loadComponent: () => import('./game/components/game'),
+        canActivate: [authGuard]
+    },
     { path: '', redirectTo: 'login', pathMatch: 'full'},
     { path: '**', redirectTo: 'login' },
 ];
