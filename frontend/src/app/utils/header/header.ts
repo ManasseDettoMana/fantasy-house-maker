@@ -5,27 +5,34 @@ import { map } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
-import { MenuItem } from 'primeng/api';
+import { ConfirmationService, MenuItem } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 export type Theme = 'white' | 'dark';
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, ButtonModule, MenuModule, RouterLinkActive],
+  imports: [
+    RouterLink, 
+    ButtonModule, 
+    MenuModule, 
+    RouterLinkActive, 
+    ConfirmDialogModule, 
+    ToastModule
+  ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header {
   private router = inject(Router);
   authService = inject(AuthService);  
-
+  confirmationService = inject(ConfirmationService);
   // prova cambio tema
   private readonly document = inject(DOCUMENT);
   private readonly _applyTheme = effect(() => {
     const theme = this.currentTheme();
     this.document.body.classList.toggle('dark-theme', theme === 'dark');
   });
-
-
 
   currentTheme = signal<Theme>('white');
   isWhiteTheme = computed(() => this.currentTheme() == 'white');
@@ -50,11 +57,32 @@ export class Header {
         {
           label: 'Logout',
           icon: 'pi pi-sign-out',
-          command: () => this.logout()
+          command: () => this.confermaLogout()
         }
       ]
     }
   ]);
+
+  confermaLogout(): void {
+    this.confirmationService.confirm({
+      message: 'Sei sicuro di voler effettuare il logout?',
+      header: 'Logout',
+      icon: 'pi pi-exclamation-triangle',
+      acceptButtonProps: {
+        label: 'Esci',
+        severity: 'danger',
+        icon: 'pi pi-sign-out'
+      },
+      rejectButtonProps: {
+        label: 'Annulla',
+        severity: 'secondary',
+        icon: 'pi pi-times'
+      },
+      accept: () => {
+        this.logout();
+      }
+    })
+  }
 
   logout(): void {
     this.authService.logout();

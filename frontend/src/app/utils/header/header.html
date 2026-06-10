@@ -8,6 +8,8 @@
             </div>
 
             <div class="d-flex align-items-center gap-2">
+                <p-toast />
+                <p-confirmdialog />
               <p-menu #menu [model]="options()" [popup]="true" />
               <p-button severity="secondary" [rounded]="true" (click)="menu.toggle($event)" icon="pi pi-user" />
             </div>
@@ -18,6 +20,8 @@
             @if(!isLogged()) {
                 <a routerLink="/login" class="navbar-brand"><i class="pi pi-sign-in"></i> Login</a>
             } @else {
+                <p-toast />
+                <p-confirmdialog />
                 <p-menu #menu [model]="options()" [popup]="true" />
                 <p-button severity="secondary" rounded="true" (click)="menu.toggle($event)" icon="pi pi-user" />
             }
