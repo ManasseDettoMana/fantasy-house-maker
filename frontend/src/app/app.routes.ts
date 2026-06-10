@@ -52,6 +52,6 @@ export const routes: Routes = [
         loadComponent: () => import('./utils/form-dinamico/form-dinamico'),
         canActivate: [authGuard]
     },
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: '**', redirectTo: 'dashboard' },
+    { path: '', redirectTo: 'login', pathMatch: 'full'},
+    { path: '**', redirectTo: 'login' },
 ];

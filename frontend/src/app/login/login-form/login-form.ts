@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule, Validators, FormBuilder} from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { LoginRequest } from '../../models/auth.model';
@@ -14,7 +14,7 @@ import { PasswordModule } from 'primeng/password';
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
 })
-export default class LoginForm {
+export default class LoginForm implements OnInit{
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private router = inject(Router);
@@ -31,6 +31,12 @@ export default class LoginForm {
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
+
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   onSubmit(): void{
     if(this.loginForm.invalid) return;

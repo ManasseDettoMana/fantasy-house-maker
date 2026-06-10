@@ -14,7 +14,11 @@
         <i class="pi pi-plus"></i>Nuova Casata
       </p-button>
     </div>
-    <p-table [value]="casate()" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10]">
+    <p-table 
+      [value]="casate()" 
+      [tableStyle]="{ 'min-width': '60rem' }" 
+      [paginator]="true" [rows]="5"
+      [rowsPerPageOptions]="[5, 10]">
 
       <ng-template #header>
         <tr>
